@@ -45,6 +45,8 @@ function RootNavigator() {
           <ProfileError message={profile.error.message} onRetry={() => profile.refetch()} />
         ) : (
           <Stack screenOptions={{ headerShown: false }}>
+            {/* Reachable in every state: Google sign-in returns here with ?code= */}
+            <Stack.Screen name="auth/callback" />
             <Stack.Protected guard={!signedIn}>
               <Stack.Screen name="sign-in" />
             </Stack.Protected>

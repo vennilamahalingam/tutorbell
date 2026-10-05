@@ -24,9 +24,24 @@ export async function signInWithGoogle(): Promise<void> {
 
   const code = new URL(result.url).searchParams.get('code');
   if (!code) throw new Error('No auth code returned from Google sign-in.');
+  await exchangeCodeOnce(code);
+}
 
-  const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
-  if (exchangeError) throw exchangeError;
+const exchanges = new Map<string, Promise<void>>();
+
+/**
+ * Swap the one-time code for a session. The same code can arrive twice — from the
+ * in-app browser result above AND as a deep link to /auth/callback — so share one attempt.
+ */
+export function exchangeCodeOnce(code: string): Promise<void> {
+  let p = exchanges.get(code);
+  if (!p) {
+    p = supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
+      if (error) throw error;
+    });
+    exchanges.set(code, p);
+  }
+  return p;
 }
 
 export const signOut = () => supabase.auth.signOut();
