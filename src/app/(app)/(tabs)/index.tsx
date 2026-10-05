@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import { FlatList, Pressable, Text, View } from 'react-native';
 
 import { EmptyState } from '@/components/ui/empty-state';
@@ -47,7 +48,7 @@ function SessionCard({ session, zone }: { session: SessionWithStudent; zone: str
         </Text>
       </View>
       <Text className="mt-1 text-sm text-ink-muted">Status: {session.status}</Text>
-      <View className="mt-3 flex-row gap-2">
+      <View className="mt-3 flex-row flex-wrap gap-2">
         <Chip
           label={session.reminder_sent_at ? 'Reminder sent' : 'Send reminder'}
           onPress={sendReminder}
@@ -59,6 +60,12 @@ function SessionCard({ session, zone }: { session: SessionWithStudent; zone: str
         <Chip
           label="Absent"
           onPress={() => setStatus.mutate({ id: session.id, status: 'absent' })}
+        />
+        <Chip
+          label="Reschedule"
+          onPress={() =>
+            router.push({ pathname: '/sessions/[id]/reschedule', params: { id: session.id } })
+          }
         />
       </View>
     </View>

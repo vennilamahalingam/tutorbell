@@ -2,7 +2,10 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import type { Session, SessionStatus } from '@/types/database';
 import {
+  createSession,
+  getSession,
   listSessionsForDay,
+  listUpcomingForStudent,
   listToReschedule,
   markReminderSent,
   reschedule,
@@ -14,7 +17,18 @@ export const sessionKeys = {
   all: ['sessions'] as const,
   day: (zone: string) => ['sessions', 'day', zone] as const,
   toReschedule: ['sessions', 'to-reschedule'] as const,
+  detail: (id: string) => ['sessions', 'detail', id] as const,
+  student: (studentId: string) => ['sessions', 'student', studentId] as const,
 };
+
+export const useSession = (id: string) =>
+  useQuery({ queryKey: sessionKeys.detail(id), queryFn: () => getSession(id) });
+
+export const useStudentSessions = (studentId: string) =>
+  useQuery({
+    queryKey: sessionKeys.student(studentId),
+    queryFn: () => listUpcomingForStudent(studentId),
+  });
 
 export const useTodaySessions = (tutorZone: string) =>
   useQuery({ queryKey: sessionKeys.day(tutorZone), queryFn: () => listSessionsForDay(tutorZone) });
@@ -44,3 +58,5 @@ export const useSaveNote = () =>
   useSessionMutation(({ id, note }: { id: string; note: string }) => saveNote(id, note));
 
 export const useMarkReminderSent = () => useSessionMutation((id: string) => markReminderSent(id));
+
+export const useCreateSession = () => useSessionMutation(createSession);

@@ -35,3 +35,33 @@ export function toUtcIso(
 }
 
 export const isValidZone = (zone: string): boolean => DateTime.local().setZone(zone).isValid;
+
+/**
+ * Date pickers return a JS Date in the device's zone. We only care about the wall-clock
+ * values the tutor picked (e.g. 5:30 PM on 6 Oct) and interpret them in the tutor's zone.
+ */
+export function pickerDateToUtcIso(date: Date, zone: string): string {
+  return toUtcIso(
+    {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+    },
+    zone,
+  );
+}
+
+/** Inverse of pickerDateToUtcIso: a JS Date whose local wall clock matches `isoUtc` in `zone`. */
+export function utcIsoToPickerDate(isoUtc: string, zone: string): Date {
+  const dt = DateTime.fromISO(isoUtc, { zone: 'utc' }).setZone(zone);
+  return new Date(dt.year, dt.month - 1, dt.day, dt.hour, dt.minute);
+}
+
+/** Next full hour from now, as a picker Date — a sensible default for a new class. */
+export function nextHourPickerDate(): Date {
+  const d = new Date();
+  d.setHours(d.getHours() + 1, 0, 0, 0);
+  return d;
+}

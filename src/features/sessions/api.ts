@@ -21,6 +21,34 @@ export async function listSessionsForDay(tutorZone: string): Promise<SessionWith
   return data as unknown as SessionWithStudent[];
 }
 
+export async function getSession(id: string): Promise<SessionWithStudent> {
+  const { data, error } = await supabase.from('sessions').select(withStudent).eq('id', id).single();
+  if (error) throw error;
+  return data as unknown as SessionWithStudent;
+}
+
+export async function listUpcomingForStudent(studentId: string): Promise<Session[]> {
+  const { data, error } = await supabase
+    .from('sessions')
+    .select('*')
+    .eq('student_id', studentId)
+    .gte('starts_at', new Date().toISOString())
+    .neq('status', 'cancelled')
+    .order('starts_at')
+    .limit(20);
+  if (error) throw error;
+  return data;
+}
+
+export async function createSession(input: {
+  student_id: string;
+  starts_at: string;
+  duration_minutes: number;
+}): Promise<void> {
+  const { error } = await supabase.from('sessions').insert(input);
+  if (error) throw error;
+}
+
 export async function listToReschedule(): Promise<SessionWithStudent[]> {
   const { data, error } = await supabase
     .from('sessions')
