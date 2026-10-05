@@ -5,6 +5,7 @@ import { ActivityIndicator, View } from 'react-native';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { useAuth } from '@/features/auth/auth-provider';
+import { useProfile } from '@/features/auth/profile';
 import { exchangeCodeOnce } from '@/features/auth/google-sign-in';
 import { useTheme } from '@/theme/theme-provider';
 
@@ -16,6 +17,7 @@ import { useTheme } from '@/theme/theme-provider';
 export default function AuthCallback() {
   const params = useLocalSearchParams<{ code?: string; error_description?: string }>();
   const { session } = useAuth();
+  const profile = useProfile();
   const { colors } = useTheme();
   const [error, setError] = useState<string | null>(params.error_description ?? null);
 
@@ -26,11 +28,14 @@ export default function AuthCallback() {
     );
   }, [params.code, session]);
 
-  if (session) return <Redirect href="/" />;
+  // Signed in: go straight to the right place (a guarded route would bounce back here).
+  if (session && profile.data) {
+    return <Redirect href={profile.data.onboarded_at ? '/' : '/timezone'} />;
+  }
 
   return (
     <View className="flex-1 items-center justify-center gap-4 bg-bg px-6">
-      {error || !params.code ? (
+      {!session && (error || !params.code) ? (
         <>
           <Text weight="semibold" className="text-center text-[18px]">
             Couldn't finish signing in
