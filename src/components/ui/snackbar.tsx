@@ -40,8 +40,7 @@ export function SnackbarProvider({ children }: PropsWithChildren) {
       {message ? (
         <Animated.View
           pointerEvents="none"
-          style={{ opacity, bottom: 88 + insets.bottom }}
-          className="absolute left-4 right-4"
+          style={{ opacity, position: 'absolute', left: 16, right: 16, bottom: 88 + insets.bottom }}
         >
           <View className="rounded-lg bg-snackbar px-4 py-3.5">
             <Text className="text-[14px] text-on-snackbar">{message}</Text>

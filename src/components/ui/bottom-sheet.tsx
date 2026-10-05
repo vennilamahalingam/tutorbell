@@ -44,12 +44,15 @@ export function BottomSheet({
             onPress={onClose}
             accessibilityLabel="Close"
           />
-          <Animated.View
-            style={{ transform: [{ translateY }], paddingBottom: 28 + insets.bottom }}
-            className="rounded-t-2xl bg-surface px-5 pt-2.5"
-          >
-            <View className="mb-4 h-1 w-9 self-center rounded-full bg-border" />
-            {children}
+          {/* Animated.View takes no className — style the inner View instead. */}
+          <Animated.View style={{ transform: [{ translateY }] }}>
+            <View
+              style={{ paddingBottom: 28 + insets.bottom }}
+              className="rounded-t-2xl bg-surface px-5 pt-2.5"
+            >
+              <View className="mb-4 h-1 w-9 self-center rounded-full bg-border" />
+              {children}
+            </View>
           </Animated.View>
         </KeyboardAvoidingView>
       </ThemeScope>

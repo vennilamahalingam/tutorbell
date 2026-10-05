@@ -8,6 +8,7 @@ export type SessionWithStudent = Session & {
 
 const withStudent = '*, student:students(id, name, timezone, city, whatsapp_number)';
 const cast = <T>(data: unknown) => data as T;
+const DAY = 24 * 60 * 60 * 1000;
 
 /** Tops up weekly classes for all active students (rolling 8 weeks). Call on app open. */
 export async function ensureSessions(): Promise<void> {
@@ -15,7 +16,7 @@ export async function ensureSessions(): Promise<void> {
   if (error) throw error;
 }
 
-/** Classes on a calendar day in the tutor's zone (excludes cancelled + decide-later). */
+/** Classes on today's date in the tutor's zone (excludes cancelled + decide-later). */
 export async function listSessionsForDay(tutorZone: string): Promise<SessionWithStudent[]> {
   const { from, to } = dayRangeUtc(tutorZone);
   const { data, error } = await supabase
@@ -25,6 +26,20 @@ export async function listSessionsForDay(tutorZone: string): Promise<SessionWith
     .lte('starts_at', to)
     .neq('status', 'cancelled')
     .neq('status', 'pending_reschedule')
+    .order('starts_at');
+  if (error) throw error;
+  return cast<SessionWithStudent[]>(data);
+}
+
+/** Scheduled classes from now to `days` ahead — next-up, DST notices, students' "Next". */
+export async function listUpcoming(days = 14): Promise<SessionWithStudent[]> {
+  const now = Date.now();
+  const { data, error } = await supabase
+    .from('sessions')
+    .select(withStudent)
+    .eq('status', 'scheduled')
+    .gte('starts_at', new Date(now).toISOString())
+    .lte('starts_at', new Date(now + days * DAY).toISOString())
     .order('starts_at');
   if (error) throw error;
   return cast<SessionWithStudent[]>(data);
@@ -62,18 +77,19 @@ export async function getSession(id: string): Promise<SessionWithStudent> {
   return cast<SessionWithStudent>(data);
 }
 
+/** All of a student's sessions, newest slot first (details screen splits upcoming / past). */
 export async function listStudentSessions(studentId: string): Promise<Session[]> {
   const { data, error } = await supabase
     .from('sessions')
     .select('*')
     .eq('student_id', studentId)
     .order('slot_at', { ascending: false })
-    .limit(60);
+    .limit(120);
   if (error) throw error;
   return data;
 }
 
-/** Sessions in a UTC range — used for clash detection. */
+/** Active classes overlapping a UTC window — used for clash detection. */
 export async function listSessionsBetween(
   fromIso: string,
   toIso: string,
@@ -89,11 +105,9 @@ export async function listSessionsBetween(
   return cast<SessionWithStudent[]>(data);
 }
 
-export async function markAttendance(
-  id: string,
-  status: Extract<SessionStatus, 'attended' | 'absent' | 'cancelled'>,
-  note: string | null,
-) {
+export type AttendanceStatus = Extract<SessionStatus, 'attended' | 'absent' | 'cancelled'>;
+
+export async function markAttendance(id: string, status: AttendanceStatus, note: string | null) {
   const { error } = await supabase
     .from('sessions')
     .update({ status, note: note?.trim() || null })
@@ -112,7 +126,7 @@ export async function reschedule(
     .update({
       starts_at: newStartsAt,
       status: newStartsAt ? 'scheduled' : 'pending_reschedule',
-      moved_from: session.starts_at ?? session.moved_from ?? session.slot_at,
+      moved_from: session.moved_from ?? session.starts_at ?? session.slot_at,
       requested_by: requestedBy,
       reminder_sent_at: null,
     })

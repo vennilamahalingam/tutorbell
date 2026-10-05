@@ -8,14 +8,17 @@ import {
   listPendingReschedule,
   listSessionsForDay,
   listStudentSessions,
+  listUpcoming,
   markAttendance,
   markReminderSent,
   reschedule,
+  type AttendanceStatus,
 } from './api';
 
 export const sessionKeys = {
   all: ['sessions'] as const,
   day: (zone: string) => ['sessions', 'day', zone] as const,
+  upcoming: ['sessions', 'upcoming'] as const,
   needsAttendance: ['sessions', 'needs-attendance'] as const,
   pending: ['sessions', 'pending-reschedule'] as const,
   detail: (id: string) => ['sessions', 'detail', id] as const,
@@ -39,6 +42,9 @@ export function useEnsureSessions(enabled: boolean) {
 
 export const useTodaySessions = (tutorZone: string) =>
   useQuery({ queryKey: sessionKeys.day(tutorZone), queryFn: () => listSessionsForDay(tutorZone) });
+
+export const useUpcoming = () =>
+  useQuery({ queryKey: sessionKeys.upcoming, queryFn: () => listUpcoming(14) });
 
 export const useNeedsAttendance = () =>
   useQuery({ queryKey: sessionKeys.needsAttendance, queryFn: listNeedsAttendance });
@@ -64,9 +70,8 @@ function useSessionMutation<T>(fn: (vars: T) => Promise<void>) {
 }
 
 export const useMarkAttendance = () =>
-  useSessionMutation(
-    (v: { id: string; status: 'attended' | 'absent' | 'cancelled'; note: string | null }) =>
-      markAttendance(v.id, v.status, v.note),
+  useSessionMutation((v: { id: string; status: AttendanceStatus; note: string | null }) =>
+    markAttendance(v.id, v.status, v.note),
   );
 
 export const useReschedule = () =>
