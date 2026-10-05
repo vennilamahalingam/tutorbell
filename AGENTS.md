@@ -42,7 +42,10 @@ Docs: https://docs.expo.dev/eas/index.md
 
 ## Tutorbell project notes
 
-- Stack: Expo Router, NativeWind v4 (Tailwind 3), Supabase, TanStack Query, Luxon. See README for folder structure.
+- **UI source of truth: `design/README.md`** (exact colors, sizes, copy per screen id 2a–2l). Follow it pixel-close.
+- Stack: Expo Router, NativeWind v4 (Tailwind 3), Supabase, TanStack Query, Luxon, react-native-svg.
+- Theme: tokens in `src/theme/colors.js` → CSS variables via `ThemeProvider`. Use classes like `bg-surface text-muted border-border`; `useTheme().colors` for SVG/native props. Light + dark required.
+- Text: always `<Text>` from `@/components/ui/text` (`weight="semibold"`, `tabular` for times). Icons: `<Icon name="…">` (Material Symbols Rounded paths in `icon-paths.ts`; add new ones from `@material-symbols/svg-400`).
 - Import navigators from subpaths: `Stack` from `expo-router/stack`, `Tabs` from `expo-router/js-tabs`.
-- Keep Supabase calls in `src/features/<feature>/api.ts` and React Query hooks in `queries.ts`.
-- Store times as UTC; convert with helpers in `src/lib/time.ts`.
+- Supabase calls in `src/features/<feature>/api.ts`, React Query hooks in `queries.ts`.
+- Time: UTC in DB; weekly schedule stored in the student's local time; helpers in `src/lib/time.ts`.

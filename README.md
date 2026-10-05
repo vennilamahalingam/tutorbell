@@ -17,27 +17,31 @@ A simple Android app for independent online tutors: attendance, rescheduling, pe
 ## Folder structure
 
 ```
+design/                 # design handoff (README = spec, Screens.dc.html, logo SVGs) — source of truth for UI
 src/
-  app/                  # Expo Router routes only (every file is a screen)
-    _layout.tsx         # providers + auth guard (Stack.Protected)
-    sign-in.tsx
+  app/                  # Expo Router routes only
+    _layout.tsx         # providers, fonts, theme, auth/onboarding guards (Stack.Protected)
+    sign-in.tsx         # 2a
+    (onboarding)/       # 2b timezone · 2k first student · 2l weekly classes
     (app)/
-      (tabs)/           # Today · Students · Reschedule · Settings
-      students/         # [id].tsx, new.tsx
-  features/             # domain logic, grouped by feature
-    auth/               # AuthProvider, Google sign-in, profile/tutor timezone
-    students/           # api.ts (Supabase calls) + queries.ts (TanStack hooks)
-    sessions/           # attendance, reschedule / "decide later", notes
-    reminders/          # WhatsApp deep-link reminder
-  components/ui/        # shared UI primitives (Screen, Button, EmptyState)
-  lib/                  # supabase client, query client, env, time (Luxon helpers)
-  types/database.ts     # DB types (regenerate with `supabase gen types`)
-supabase/migrations/    # SQL schema + row level security
+      (tabs)/           # Today · Students · Settings + custom bottom nav
+      students/         # new (2h), [id] (2g)
+      sessions/[id]/    # reschedule (2e)
+  components/
+    ui/                 # design-system primitives: Text, Button, Card, TextField, Segmented,
+                        # DayChips, Badge, Notice, BottomSheet, Snackbar, Icon, Logo…
+    pickers/            # city search, country code, native date/time pickers
+  features/             # domain logic per feature: api.ts (Supabase) + queries.ts (React Query)
+    auth/ onboarding/ students/ sessions/ reminders/
+  lib/                  # supabase client, time + timezone maths (Luxon), places (city → zone)
+  theme/                # colors.js (light/dark tokens) + ThemeProvider (CSS variables)
+  types/database.ts
+supabase/migrations/    # schema, session generation functions, RLS
 ```
 
 ## Conventions
 
-- Times are stored in UTC (`timestamptz`) and converted with Luxon: tutor's zone for the app, student's zone for reminders.
+- Times are stored in UTC (`timestamptz`). A weekly schedule is stored in the **student's** local time, so it stays fixed for them across daylight saving; the tutor's time moves. Postgres generates 8 weeks of classes (`generate_sessions` / `ensure_sessions`).
+- UI follows `design/README.md`. Use theme tokens (`bg-primary`, `text-muted`, `border-border`…), never raw hex. Use `<Text>` from `components/ui/text` (Plus Jakarta Sans, `weight`, `tabular` for times).
 - Each feature has `api.ts` (plain async Supabase calls) and `queries.ts` (React Query hooks). Screens only use the hooks.
-- Colors live in `tailwind.config.js` as placeholder tokens (`brand`, `ink`, `surface`…). Swap in the design values.
 - Run `npm run typecheck` before committing.

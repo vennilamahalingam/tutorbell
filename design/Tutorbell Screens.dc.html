@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,0&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EFEBE3;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+a{color:#1E5F74}a:hover{color:#15475A}
+.ms{font-family:'Material Symbols Rounded';font-weight:400;font-style:normal;font-size:22px;line-height:1;display:inline-block;letter-spacing:normal;text-transform:none;white-space:nowrap;-webkit-font-feature-settings:'liga';font-feature-settings:'liga'}
+@keyframes tbwiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-18deg)}40%{transform:rotate(14deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
+.dv-turn{padding:44px 48px 36px;border-bottom:1px solid rgba(0,0,0,.08)}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 24px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1D2433;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 15px/1.2 'Plus Jakarta Sans',sans-serif;color:#1D2433}
+.dv-opts{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1D2433;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 12px/1.3 'Plus Jakarta Sans',sans-serif;color:#5B6475}
+.dv-next{margin:24px 0 0;font:12px/1.5 'Plus Jakarta Sans',sans-serif;color:#5B6475}
+button{font-family:inherit;cursor:pointer}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Logo — the friendly bell</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a"><div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Brass bell on teal tile — app icon first</div>
+<div style="width:300px;height:220px;background:#FAF7F2;border:1px solid #E4DED2;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+<svg width="88" height="88" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#1E5F74"></rect><circle cx="24" cy="11" r="2.2" fill="#E9A23B"></circle><path d="M24 12.5c-6.2 0-10.5 4.8-10.5 11v5.5l-3 4.5h27l-3-4.5v-5.5c0-6.2-4.3-11-10.5-11z" fill="#E9A23B"></path><circle cx="24" cy="37" r="3" fill="#E9A23B"></circle></svg>
+<div style="font-weight:600;font-size:24px;letter-spacing:-0.5px;color:#1D2433">tutor<span style="color:#1E5F74">bell</span></div>
+</div></div>
+
+<div class="dv-opt" id="1d"><div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Icon sizes (<a class="dv-oid" href="#1a">1a</a>) — launcher, notification, splash</div>
+<div style="width:300px;height:220px;background:#FAF7F2;border:1px solid #E4DED2;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:24px">
+<svg width="64" height="64" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#1E5F74"></circle><circle cx="24" cy="11" r="2.2" fill="#E9A23B"></circle><path d="M24 12.5c-6.2 0-10.5 4.8-10.5 11v5.5l-3 4.5h27l-3-4.5v-5.5c0-6.2-4.3-11-10.5-11z" fill="#E9A23B"></path><circle cx="24" cy="37" r="3" fill="#E9A23B"></circle></svg>
+<svg width="40" height="40" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#1E5F74"></rect><path d="M24 12.5c-6.2 0-10.5 4.8-10.5 11v5.5l-3 4.5h27l-3-4.5v-5.5c0-6.2-4.3-11-10.5-11z" fill="#E9A23B"></path><circle cx="24" cy="37" r="3" fill="#E9A23B"></circle></svg>
+<svg width="24" height="24" viewBox="0 0 48 48"><path d="M24 12.5c-6.2 0-10.5 4.8-10.5 11v5.5l-3 4.5h27l-3-4.5v-5.5c0-6.2-4.3-11-10.5-11z" fill="#1D2433"></path><circle cx="24" cy="37" r="3" fill="#1D2433"></circle></svg>
+</div></div>
+
+</div>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Screens — light (Today is interactive: tap Remind, tap a card)</span></div>
+<div class="dv-opts">
+
+<!-- 2a Sign in -->
+<div class="dv-opt" id="2a"><div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Sign in</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums"><span>9:41</span><span style="display:flex;gap:4px"><span class="ms" style="font-size:16px">signal_cellular_alt</span><span class="ms" style="font-size:16px">battery_full</span></span></div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:20px">
+<svg width="72" height="72" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#1E5F74"></rect><circle cx="24" cy="11" r="2.2" fill="#E9A23B"></circle><path d="M24 12.5c-6.2 0-10.5 4.8-10.5 11v5.5l-3 4.5h27l-3-4.5v-5.5c0-6.2-4.3-11-10.5-11z" fill="#E9A23B"></path><circle cx="24" cy="37" r="3" fill="#E9A23B"></circle></svg>
+<div style="font-size:30px;font-weight:600;letter-spacing:-0.6px;line-height:1.15">Every class,<br>on time. Both times.</div>
+<div style="font-size:15px;line-height:1.5;color:#5B6475;text-wrap:pretty">Track attendance, reschedule without timezone maths, and ring students on WhatsApp.</div>
+</div>
+<div style="padding:0 24px 40px;display:flex;flex-direction:column;gap:14px">
+<button style="height:52px;border-radius:8px;border:1px solid #E4DED2;background:#FFFFFF;display:flex;align-items:center;justify-content:center;gap:12px;font-size:15px;font-weight:600;color:#1D2433"><span style="width:22px;height:22px;border-radius:50%;background:#EEF0F3;font-size:12px;display:flex;align-items:center;justify-content:center;color:#5B6475">G</span>Continue with Google</button>
+<div style="font-size:12px;color:#5B6475;text-align:center">Your data stays in your account.</div>
+</div>
+</div></div>
+
+<!-- 2b Onboarding -->
+<div class="dv-opt" id="2b"><div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Onboarding · confirm timezone</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="padding:16px 24px 0;display:flex;gap:6px"><div style="flex:1;height:4px;border-radius:4px;background:#1E5F74"></div><div style="flex:1;height:4px;border-radius:4px;background:#E4DED2"></div><div style="flex:1;height:4px;border-radius:4px;background:#E4DED2"></div></div>
+<div style="padding:28px 24px 0;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;color:#5B6475;font-weight:600">Step 1 of 3</div>
+<div style="font-size:24px;font-weight:600;letter-spacing:-0.4px">Where do you teach from?</div>
+<div style="font-size:14px;color:#5B6475;line-height:1.5">We'll show every class in your time first, with your student's time beside it.</div>
+</div>
+<div style="padding:24px;display:flex;flex-direction:column;gap:12px">
+<div style="background:#FFFFFF;border:2px solid #1E5F74;border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px">
+<span class="ms" style="color:#1E5F74">my_location</span>
+<div style="flex:1"><div style="font-weight:600;font-size:15px">India · Kolkata</div><div style="font-size:13px;color:#5B6475">IST · UTC+5:30 · detected</div></div>
+<span class="ms" style="color:#1E5F74">check_circle</span>
+</div>
+<div style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px">
+<span class="ms" style="color:#5B6475">search</span><div style="font-size:15px;color:#5B6475">Choose another city</div>
+</div>
+<div style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;padding:16px;display:flex;justify-content:space-between;align-items:center">
+<div style="font-size:13px;color:#5B6475">Your time now</div>
+<div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums">7:12 PM</div>
+</div>
+</div>
+<div style="flex:1"></div>
+<div style="padding:0 24px 32px"><button style="width:100%;height:52px;border-radius:8px;border:0;background:#1E5F74;color:#FFFFFF;font-size:15px;font-weight:600">Looks right</button></div>
+</div></div>
+
+<!-- 2k Onboarding step 2 -->
+<div class="dv-opt" id="2k"><div class="dv-olabel"><a class="dv-oid" href="#2k">2k</a>Onboarding · step 2, first student</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="padding:16px 24px 0;display:flex;gap:6px"><div style="flex:1;height:4px;border-radius:4px;background:#1E5F74"></div><div style="flex:1;height:4px;border-radius:4px;background:#1E5F74"></div><div style="flex:1;height:4px;border-radius:4px;background:#E4DED2"></div></div>
+<div style="padding:28px 24px 0;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;color:#5B6475;font-weight:600">Step 2 of 3</div>
+<div style="font-size:24px;font-weight:600;letter-spacing:-0.4px">Add your first student</div>
+<div style="font-size:14px;color:#5B6475;line-height:1.5">Just the basics. You can add the rest later.</div>
+</div>
+<div style="padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:600;color:#5B6475">Name</div><div style="height:52px;border:2px solid #1E5F74;border-radius:12px;background:#FFF;display:flex;align-items:center;padding:0 14px;font-size:15px">Emma Clarke</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:600;color:#5B6475">WhatsApp number</div><div style="display:flex;gap:8px"><div style="height:52px;border:1px solid #E4DED2;border-radius:12px;background:#FFF;display:flex;align-items:center;gap:4px;padding:0 12px;font-size:15px">+1<span class="ms" style="font-size:18px;color:#5B6475">expand_more</span></div><div style="flex:1;min-width:0;height:52px;border:1px solid #E4DED2;border-radius:12px;background:#FFF;display:flex;align-items:center;padding:0 14px;font-size:15px;font-variant-numeric:tabular-nums">212 555 0148</div></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:600;color:#5B6475">Where do they live?</div><div style="height:52px;border:1px solid #E4DED2;border-radius:12px;background:#FFF;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:15px">New York, USA<span style="font-size:12px;color:#5B6475">EDT −4:00</span></div></div>
+<div style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+<div style="font-size:13px;color:#5B6475">Emma's time now</div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums">9:42 AM</div><div style="font-size:12px;color:#5B6475">Fri · 9h 30m behind you</div></div>
+</div>
+</div>
+<div style="flex:1"></div>
+<div style="padding:0 24px 32px;display:flex;gap:8px"><button style="height:52px;padding:0 18px;border-radius:8px;border:1px solid #E4DED2;background:#FFF;font-size:15px;font-weight:600;color:#1D2433">Back</button><button style="flex:1;height:52px;border-radius:8px;border:0;background:#1E5F74;color:#FFFFFF;font-size:15px;font-weight:600">Next</button></div>
+</div></div>
+
+<!-- 2l Onboarding step 3 -->
+<div class="dv-opt" id="2l"><div class="dv-olabel"><a class="dv-oid" href="#2l">2l</a>Onboarding · step 3, weekly classes → Today</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="padding:16px 24px 0;display:flex;gap:6px"><div style="flex:1;height:4px;border-radius:4px;background:#1E5F74"></div><div style="flex:1;height:4px;border-radius:4px;background:#1E5F74"></div><div style="flex:1;height:4px;border-radius:4px;background:#1E5F74"></div></div>
+<div style="padding:28px 24px 0;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;color:#5B6475;font-weight:600">Step 3 of 3</div>
+<div style="font-size:24px;font-weight:600;letter-spacing:-0.4px">When does Emma have class?</div>
+<div style="font-size:14px;color:#5B6475;line-height:1.5">Pick the days and your time. We'll work out hers.</div>
+</div>
+<div style="padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;gap:6px">
+<div style="width:40px;height:40px;border-radius:20px;background:#1E5F74;color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600">M</div>
+<div style="width:40px;height:40px;border-radius:20px;border:1px solid #E4DED2;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px">T</div>
+<div style="width:40px;height:40px;border-radius:20px;background:#1E5F74;color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600">W</div>
+<div style="width:40px;height:40px;border-radius:20px;border:1px solid #E4DED2;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px">T</div>
+<div style="width:40px;height:40px;border-radius:20px;background:#1E5F74;color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600">F</div>
+<div style="width:40px;height:40px;border-radius:20px;border:1px solid #E4DED2;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px">S</div>
+<div style="width:40px;height:40px;border-radius:20px;border:1px solid #E4DED2;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px">S</div>
+</div>
+<div style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;display:flex">
+<div style="flex:1;padding:14px 16px;border-right:1px solid #E4DED2"><div style="font-size:12px;color:#5B6475">Your time</div><div style="font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px">8:30 PM</div><div style="font-size:12px;color:#5B6475">Mon, Wed, Fri</div></div>
+<div style="flex:1;padding:14px 16px"><div style="font-size:12px;color:#5B6475">New York</div><div style="font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px;color:#5B6475">11:00 AM</div><div style="font-size:12px;color:#5B6475">Mon, Wed, Fri</div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="font-size:13px;font-weight:600;color:#5B6475">Class length</div>
+<div style="display:flex;background:#EEEAE2;border-radius:8px;padding:4px"><div style="flex:1;height:40px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#5B6475">30 min</div><div style="flex:1;height:40px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#5B6475">45 min</div><div style="flex:1;height:40px;border-radius:6px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600">60 min</div></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:600;color:#5B6475">Starts</div><div style="height:52px;border:1px solid #E4DED2;border-radius:12px;background:#FFF;display:flex;align-items:center;padding:0 14px;font-size:15px">Today, Fri 25 Sep</div></div>
+</div>
+<div style="flex:1"></div>
+<div style="padding:0 24px 32px;display:flex;flex-direction:column;gap:10px"><button style="width:100%;height:52px;border-radius:8px;border:0;background:#1E5F74;color:#FFFFFF;font-size:15px;font-weight:600">Go to Today</button><div style="font-size:12px;color:#5B6475;text-align:center">Add more students any time from Students.</div></div>
+</div></div>
+
+<!-- 2c Today interactive -->
+<div class="dv-opt" id="2c"><div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Today (home) · interactive</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column;position:relative">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600;flex:none"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="padding:12px 20px 12px;display:flex;align-items:center;justify-content:space-between;flex:none">
+<div><div style="font-size:20px;font-weight:600;letter-spacing:-0.3px">Friday, 25 Sep</div><div style="font-size:13px;color:#5B6475;margin-top:2px">Today · 3 classes</div></div>
+<button style="width:44px;height:44px;border-radius:22px;border:1px solid #E4DED2;background:#FFFFFF;display:flex;align-items:center;justify-content:center;color:#1E5F74"><span class="ms">add</span></button>
+</div>
+<div style="flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;padding:0 16px 16px;display:flex;flex-direction:column;gap:12px;min-width:0">
+<div style="background:#FDF3E2;border:1px solid #F3DDB5;border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start"><span class="ms" style="font-size:20px;color:#9A6512">schedule</span><div style="font-size:13px;line-height:1.45;color:#6B470E">From 2 Nov, Emma's class moves to 7:30 PM your time.</div></div>
+
+<div style="font-size:12px;font-weight:600;color:#5B6475;text-transform:uppercase;letter-spacing:0.6px;padding:6px 4px 0">Needs attendance</div>
+<div style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600">2 classes from yesterday need attendance.</div><div style="font-size:13px;color:#5B6475;margin-top:2px">Aarav 6:00 PM · Lily 9:00 PM</div></div>
+<button style="height:40px;padding:0 14px;border-radius:8px;border:1px solid #1E5F74;background:#FFFFFF;color:#1E5F74;font-weight:600;font-size:13px">Mark</button>
+</div>
+
+<div style="font-size:12px;font-weight:600;color:#5B6475;text-transform:uppercase;letter-spacing:0.6px;padding:6px 4px 0">To reschedule</div>
+<div style="background:#FFFFFF;border:1px dashed #C9C0AF;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600">Noah · Wed class</div><div style="font-size:13px;color:#5B6475;margin-top:2px">Decided later · asked by student</div></div>
+<button style="height:40px;padding:0 14px;border-radius:8px;border:1px solid #1E5F74;background:#FFFFFF;color:#1E5F74;font-weight:600;font-size:13px;white-space:nowrap;flex:none">Pick time</button>
+</div>
+
+<div style="font-size:12px;font-weight:600;color:#5B6475;text-transform:uppercase;letter-spacing:0.6px;padding:6px 4px 0">Classes</div>
+<sc-for list="{{ classes }}" as="c" hint-placeholder-count="3">
+<div onClick="{{ c.open }}" style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px;cursor:pointer">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+<div style="min-width:0"><div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-0.2px">{{ c.time }}</div><div style="font-size:15px;font-weight:600;margin-top:4px">{{ c.name }}</div><div style="font-size:13px;color:#5B6475;margin-top:2px;font-variant-numeric:tabular-nums">{{ c.local }}</div></div>
+<sc-if value="{{ c.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;padding:4px 8px;border-radius:8px;white-space:nowrap;background:{{ c.badgeBg }};color:{{ c.badgeFg }}">{{ c.badge }}</span></sc-if>
+</div>
+<div style="display:flex;gap:8px">
+<button onClick="{{ c.remind }}" style="flex:1;height:44px;border-radius:8px;border:0;background:#1E5F74;color:#FFFFFF;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px" style-hover="background:#174B5C"><span class="ms" style="font-size:20px;color:#E9A23B;animation:{{ c.anim }}">notifications</span>{{ c.remindLabel }}</button>
+<button onClick="{{ c.resched }}" style="flex:1;height:44px;border-radius:8px;border:1px solid #E4DED2;background:#FFFFFF;color:#1D2433;font-weight:600;font-size:14px" style-hover="background:#FAF7F2">Reschedule</button>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:16px;right:16px;bottom:84px;background:#1D2433;color:#FFFFFF;border-radius:12px;padding:14px 16px;font-size:14px">{{ toast }}</div></sc-if>
+<div style="flex:none;height:72px;background:#FFFFFF;border-top:1px solid #E4DED2;display:flex">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#1E5F74;font-size:12px;font-weight:600"><span style="background:#DCEAEE;border-radius:16px;padding:4px 18px;display:flex"><span class="ms">today</span></span>Today</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#5B6475;font-size:12px"><span style="padding:4px 18px;display:flex"><span class="ms">group</span></span>Students</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#5B6475;font-size:12px"><span style="padding:4px 18px;display:flex"><span class="ms">settings</span></span>Settings</div>
+</div>
+<sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeSheet }}" style="position:absolute;inset:0;background:rgba(29,36,51,0.4);display:flex;align-items:flex-end">
+<div onClick="{{ stop }}" style="width:100%;background:#FFFFFF;border-radius:20px 20px 0 0;padding:10px 20px 28px;display:flex;flex-direction:column;gap:4px">
+<div style="width:36px;height:4px;border-radius:4px;background:#E4DED2;align-self:center;margin-bottom:12px"></div>
+<div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums">{{ sheet.time }} · {{ sheet.name }}</div>
+<div style="font-size:13px;color:#5B6475;margin-bottom:12px">{{ sheet.local }}</div>
+<button onClick="{{ sheet.remind }}" style="height:52px;border:0;background:transparent;display:flex;align-items:center;gap:14px;font-size:15px;color:#1D2433;padding:0 4px;border-radius:8px" style-hover="background:#FAF7F2"><span class="ms" style="color:#E9A23B">notifications</span>Send reminder on WhatsApp</button>
+<button style="height:52px;border:0;background:transparent;display:flex;align-items:center;gap:14px;font-size:15px;color:#1D2433;padding:0 4px;border-radius:8px" style-hover="background:#FAF7F2"><span class="ms" style="color:#1E5F74">how_to_reg</span>Mark attendance</button>
+<button style="height:52px;border:0;background:transparent;display:flex;align-items:center;gap:14px;font-size:15px;color:#1D2433;padding:0 4px;border-radius:8px" style-hover="background:#FAF7F2"><span class="ms" style="color:#1E5F74">event_repeat</span>Reschedule</button>
+</div></div>
+</sc-if>
+</div></div>
+
+<!-- 2d Mark attendance -->
+<div class="dv-opt" id="2d"><div class="dv-olabel"><a class="dv-oid" href="#2d">2d</a>Mark attendance · sheet</div>
+<div style="width:360px;height:760px;background:#7C8089;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end">
+<div style="background:#FFFFFF;border-radius:20px 20px 0 0;padding:10px 20px 28px;display:flex;flex-direction:column;gap:14px">
+<div style="width:36px;height:4px;border-radius:4px;background:#E4DED2;align-self:center"></div>
+<div><div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums">6:00 PM · Aarav Mehta</div><div style="font-size:13px;color:#5B6475;margin-top:2px">Thu 24 Sep · 1:30 PM Thu in London</div></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="height:52px;border-radius:12px;border:2px solid #2E8B57;background:#E3F1E9;display:flex;align-items:center;gap:12px;padding:0 14px;color:#1F5E3B;font-weight:600;font-size:15px"><span class="ms">check_circle</span>Attended</div>
+<div style="height:52px;border-radius:12px;border:1px solid #E4DED2;display:flex;align-items:center;gap:12px;padding:0 14px;font-size:15px"><span class="ms" style="color:#D1564B">person_off</span>Absent</div>
+<div style="height:52px;border-radius:12px;border:1px solid #E4DED2;display:flex;align-items:center;gap:12px;padding:0 14px;font-size:15px"><span class="ms" style="color:#8C93A0">block</span>Cancelled</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:600;color:#5B6475">Note (optional)</div>
+<div style="min-height:72px;border:1px solid #E4DED2;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.45">Finished fractions. Homework: page 42, Q1–8.</div>
+<div style="font-size:12px;color:#5B6475;text-align:right">46 / 140</div></div>
+<button style="height:52px;border-radius:8px;border:0;background:#1E5F74;color:#FFFFFF;font-size:15px;font-weight:600">Save</button>
+</div></div></div>
+
+<!-- 2e Reschedule -->
+<div class="dv-opt" id="2e"><div class="dv-olabel"><a class="dv-oid" href="#2e">2e</a>Reschedule · both times + clash</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="height:56px;padding:0 8px;display:flex;align-items:center;gap:4px"><span style="width:48px;height:48px;display:flex;align-items:center;justify-content:center" class="ms">close</span><div style="font-size:18px;font-weight:600">Reschedule Emma</div></div>
+<div style="flex:1;overflow:hidden;padding:0 16px;display:flex;flex-direction:column;gap:14px">
+<div style="font-size:13px;color:#5B6475">Was Fri 25 Sep, 8:30 PM</div>
+<div style="display:flex;gap:8px;overflow:hidden">
+<div style="flex:none;width:52px;height:64px;border-radius:12px;border:1px solid #E4DED2;background:#FFF;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;color:#5B6475">Fri<span style="font-size:17px;font-weight:600;color:#1D2433">25</span></div>
+<div style="flex:none;width:52px;height:64px;border-radius:12px;background:#1E5F74;color:#FFF;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px">Sat<span style="font-size:17px;font-weight:600">26</span></div>
+<div style="flex:none;width:52px;height:64px;border-radius:12px;border:1px solid #E4DED2;background:#FFF;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;color:#5B6475">Sun<span style="font-size:17px;font-weight:600;color:#1D2433">27</span></div>
+<div style="flex:none;width:52px;height:64px;border-radius:12px;border:1px solid #E4DED2;background:#FFF;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;color:#5B6475">Mon<span style="font-size:17px;font-weight:600;color:#1D2433">28</span></div>
+<div style="flex:none;width:52px;height:64px;border-radius:12px;border:1px solid #E4DED2;background:#FFF;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;color:#5B6475">Tue<span style="font-size:17px;font-weight:600;color:#1D2433">29</span></div>
+</div>
+<div style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;display:flex">
+<div style="flex:1;padding:14px 16px;border-right:1px solid #E4DED2"><div style="font-size:12px;color:#5B6475">Your time</div><div style="font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px">6:00 PM</div><div style="font-size:12px;color:#5B6475">Sat 26</div></div>
+<div style="flex:1;padding:14px 16px"><div style="font-size:12px;color:#5B6475">New York</div><div style="font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px;color:#5B6475">8:30 AM</div><div style="font-size:12px;color:#5B6475">Sat 26</div></div>
+</div>
+<div style="background:#FBE7E5;border-radius:12px;padding:12px 14px;display:flex;gap:10px;font-size:13px;color:#8E2F27"><span class="ms" style="font-size:20px">warning</span>Clashes with Aarav, Sat 6:00–7:00 PM.</div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="font-size:13px;font-weight:600;color:#5B6475">Who asked?</div>
+<div style="display:flex;background:#EEEAE2;border-radius:8px;padding:4px"><div style="flex:1;height:40px;border-radius:6px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600">Student</div><div style="flex:1;height:40px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#5B6475">Me</div></div></div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0"><div style="font-size:14px">Send new time on WhatsApp?</div><div style="width:48px;height:28px;border-radius:14px;background:#1E5F74;position:relative"><div style="position:absolute;right:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#FFF"></div></div></div>
+</div>
+<div style="padding:16px;display:flex;gap:8px"><button style="flex:1;height:52px;border-radius:8px;border:1px solid #E4DED2;background:#FFF;font-size:15px;font-weight:600;color:#1D2433">Decide later</button><button style="flex:1;height:52px;border-radius:8px;border:0;background:#1E5F74;color:#FFF;font-size:15px;font-weight:600">Move class</button></div>
+</div></div>
+
+<!-- 2f Students -->
+<div class="dv-opt" id="2f"><div class="dv-olabel"><a class="dv-oid" href="#2f">2f</a>Students</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="padding:12px 20px;display:flex;align-items:center;justify-content:space-between"><div style="font-size:20px;font-weight:600">Students</div><button style="height:40px;padding:0 14px;border-radius:8px;border:0;background:#1E5F74;color:#FFF;font-weight:600;font-size:13px;display:flex;align-items:center;gap:4px"><span class="ms" style="font-size:18px">add</span>Add</button></div>
+<div style="flex:1;padding:0 16px;display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ students }}" as="s" hint-placeholder-count="5">
+<div style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:20px;background:#DCEAEE;color:#1E5F74;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px">{{ s.initial }}</div>
+<div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600">{{ s.name }}</div><div style="font-size:13px;color:#5B6475;margin-top:2px;font-variant-numeric:tabular-nums">Next · {{ s.next }}</div></div>
+<div style="text-align:right"><div style="font-size:14px;font-weight:600;font-variant-numeric:tabular-nums">{{ s.now }}</div><div style="font-size:12px;color:#5B6475">{{ s.city }}</div></div>
+</div>
+</sc-for>
+</div>
+<div style="flex:none;height:72px;background:#FFFFFF;border-top:1px solid #E4DED2;display:flex">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#5B6475;font-size:12px"><span style="padding:4px 18px;display:flex"><span class="ms">today</span></span>Today</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#1E5F74;font-size:12px;font-weight:600"><span style="background:#DCEAEE;border-radius:16px;padding:4px 18px;display:flex"><span class="ms">group</span></span>Students</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#5B6475;font-size:12px"><span style="padding:4px 18px;display:flex"><span class="ms">settings</span></span>Settings</div>
+</div>
+</div></div>
+
+<!-- 2g Student details -->
+<div class="dv-opt" id="2g"><div class="dv-olabel"><a class="dv-oid" href="#2g">2g</a>Student details</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="height:56px;padding:0 8px;display:flex;align-items:center;justify-content:space-between"><span style="width:48px;height:48px;display:flex;align-items:center;justify-content:center" class="ms">arrow_back</span><span style="width:48px;height:48px;display:flex;align-items:center;justify-content:center" class="ms">more_vert</span></div>
+<div style="padding:0 20px 16px"><div style="font-size:24px;font-weight:600;letter-spacing:-0.4px">Emma Clarke</div><div style="font-size:13px;color:#5B6475;margin-top:4px">New York · 9:42 AM Fri there · Mon, Wed, Fri · 60 min</div></div>
+<div style="flex:1;overflow:hidden;padding:0 16px;display:flex;flex-direction:column;gap:12px">
+<div style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;padding:14px 16px">
+<div style="font-size:13px;font-weight:600;color:#5B6475;margin-bottom:10px">September</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center">
+<div><div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;color:#1F5E3B">9</div><div style="font-size:11px;color:#5B6475">Attended</div></div>
+<div><div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;color:#3F2F8F">2</div><div style="font-size:11px;color:#5B6475">Moved</div></div>
+<div><div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;color:#8E2F27">1</div><div style="font-size:11px;color:#5B6475">Absent</div></div>
+<div><div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;color:#4E5563">0</div><div style="font-size:11px;color:#5B6475">Cancelled</div></div>
+</div></div>
+<div style="font-size:12px;font-weight:600;color:#5B6475;text-transform:uppercase;letter-spacing:0.6px;padding:4px 4px 0">Upcoming</div>
+<div style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:17px;font-weight:600;font-variant-numeric:tabular-nums">Today 8:30 PM</div><div style="font-size:13px;color:#5B6475">11:00 AM Fri in New York</div></div><span class="ms" style="color:#1E5F74">chevron_right</span></div>
+<div style="font-size:12px;font-weight:600;color:#5B6475;text-transform:uppercase;letter-spacing:0.6px;padding:4px 4px 0">Past sessions</div>
+<div style="background:#FFFFFF;border:1px solid #E4DED2;border-radius:14px;padding:4px 16px">
+<div style="padding:10px 0;border-bottom:1px solid #F0EBE1"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:14px;font-weight:600;font-variant-numeric:tabular-nums">Wed 23 · 8:30 PM</div><span style="font-size:12px;font-weight:600;padding:3px 8px;border-radius:8px;background:#E3F1E9;color:#1F5E3B">Attended</span></div><div style="font-size:13px;color:#5B6475;margin-top:4px">Essay structure, intro para drafted.</div></div>
+<div style="padding:10px 0;border-bottom:1px solid #F0EBE1"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:14px;font-weight:600;font-variant-numeric:tabular-nums">Mon 21 · 7:00 PM</div><span style="font-size:12px;font-weight:600;padding:3px 8px;border-radius:8px;background:#ECE8FA;color:#3F2F8F">Moved from Sun</span></div></div>
+<div style="padding:10px 0"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:14px;font-weight:600;font-variant-numeric:tabular-nums">Fri 18 · 8:30 PM</div><span style="font-size:12px;font-weight:600;padding:3px 8px;border-radius:8px;background:#FBE7E5;color:#8E2F27">Absent</span></div></div>
+</div>
+</div>
+<div style="padding:16px;display:flex;gap:8px"><button style="flex:1;height:48px;border-radius:8px;border:1px solid #E4DED2;background:#FFF;font-size:14px;font-weight:600;color:#1D2433">Pause student</button><button style="flex:1;height:48px;border-radius:8px;border:0;background:#1E5F74;color:#FFF;font-size:14px;font-weight:600">Edit schedule</button></div>
+</div></div>
+
+<!-- 2h Add student -->
+<div class="dv-opt" id="2h"><div class="dv-olabel"><a class="dv-oid" href="#2h">2h</a>Add student</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="height:56px;padding:0 8px;display:flex;align-items:center;gap:4px"><span style="width:48px;height:48px;display:flex;align-items:center;justify-content:center" class="ms">close</span><div style="font-size:18px;font-weight:600">New student</div></div>
+<div style="flex:1;padding:4px 16px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:600;color:#5B6475">Name</div><div style="height:52px;border:2px solid #1E5F74;border-radius:12px;background:#FFF;display:flex;align-items:center;padding:0 14px;font-size:15px">Lily Tan</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:600;color:#5B6475">WhatsApp number</div><div style="display:flex;gap:8px"><div style="height:52px;border:1px solid #E4DED2;border-radius:12px;background:#FFF;display:flex;align-items:center;gap:4px;padding:0 12px;font-size:15px">+61<span class="ms" style="font-size:18px;color:#5B6475">expand_more</span></div><div style="flex:1;height:52px;border:1px solid #E4DED2;border-radius:12px;background:#FFF;display:flex;align-items:center;padding:0 14px;font-size:15px;font-variant-numeric:tabular-nums">412 555 019</div></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:600;color:#5B6475">City (sets timezone)</div><div style="height:52px;border:1px solid #E4DED2;border-radius:12px;background:#FFF;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:15px">Sydney, Australia<span style="font-size:12px;color:#5B6475">AEST +10:00</span></div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="font-size:13px;font-weight:600;color:#5B6475">Weekly schedule</div>
+<div style="display:flex;gap:6px">
+<div style="width:40px;height:40px;border-radius:20px;border:1px solid #E4DED2;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px">M</div>
+<div style="width:40px;height:40px;border-radius:20px;background:#1E5F74;color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600">T</div>
+<div style="width:40px;height:40px;border-radius:20px;border:1px solid #E4DED2;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px">W</div>
+<div style="width:40px;height:40px;border-radius:20px;background:#1E5F74;color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600">T</div>
+<div style="width:40px;height:40px;border-radius:20px;border:1px solid #E4DED2;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px">F</div>
+<div style="width:40px;height:40px;border-radius:20px;border:1px solid #E4DED2;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px">S</div>
+<div style="width:40px;height:40px;border-radius:20px;border:1px solid #E4DED2;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px">S</div>
+</div>
+<div style="display:flex;gap:8px"><div style="flex:1;height:52px;border:1px solid #E4DED2;border-radius:12px;background:#FFF;padding:6px 14px;display:flex;flex-direction:column;justify-content:center"><div style="font-size:15px;font-weight:600;font-variant-numeric:tabular-nums">3:30 PM</div><div style="font-size:11px;color:#5B6475">8:00 PM Tue in Sydney</div></div><div style="width:96px;height:52px;border:1px solid #E4DED2;border-radius:12px;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:15px">60 min</div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;font-weight:600;color:#5B6475">Start date</div><div style="height:52px;border:1px solid #E4DED2;border-radius:12px;background:#FFF;display:flex;align-items:center;padding:0 14px;font-size:15px">Tue, 29 Sep</div></div>
+</div>
+<div style="padding:16px"><button style="width:100%;height:52px;border-radius:8px;border:0;background:#1E5F74;color:#FFF;font-size:15px;font-weight:600">Save student</button></div>
+</div></div>
+
+<!-- 2i Settings -->
+<div class="dv-opt" id="2i"><div class="dv-olabel"><a class="dv-oid" href="#2i">2i</a>Settings</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="padding:12px 20px"><div style="font-size:20px;font-weight:600">Settings</div></div>
+<div style="flex:1;padding:0 16px;display:flex;flex-direction:column;gap:12px">
+<div style="background:#FFF;border:1px solid #E4DED2;border-radius:14px;padding:0 16px">
+<div style="min-height:60px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #F0EBE1"><span class="ms" style="color:#1E5F74">public</span><div style="flex:1"><div style="font-size:15px">Your timezone</div><div style="font-size:13px;color:#5B6475">Kolkata · IST</div></div><span class="ms" style="color:#5B6475">chevron_right</span></div>
+<div style="min-height:60px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #F0EBE1"><span class="ms" style="color:#1E5F74">block</span><div style="flex:1"><div style="font-size:15px">Blocked time</div><div style="font-size:13px;color:#5B6475">Daily 1:00–2:30 PM</div></div><span class="ms" style="color:#5B6475">chevron_right</span></div>
+<div style="min-height:60px;display:flex;align-items:center;gap:14px"><span class="ms" style="color:#1E5F74">calendar_month</span><div style="flex:1"><div style="font-size:15px">Google Calendar sync</div><div style="font-size:13px;color:#5B6475">Off</div></div><div style="width:48px;height:28px;border-radius:14px;background:#E4DED2;position:relative"><div style="position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#FFF"></div></div></div>
+</div>
+<div style="background:#FFF;border:1px solid #E4DED2;border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:center;gap:10px"><span class="ms" style="color:#E9A23B">notifications</span><div style="font-size:15px">Reminder message</div></div>
+<div style="background:#E7F6E4;border-radius:12px 12px 12px 4px;padding:10px 12px;font-size:14px;line-height:1.45;color:#1D2433">Upcoming session today at <span style="font-weight:600;color:#1E5F74">{time}</span>.</div>
+<div style="font-size:12px;color:#5B6475">{time} is filled in with the student's local time.</div>
+</div>
+<div style="background:#FFF;border:1px solid #E4DED2;border-radius:14px;padding:0 16px">
+<div style="min-height:60px;display:flex;align-items:center;gap:14px"><span class="ms" style="color:#1E5F74">dark_mode</span><div style="flex:1;font-size:15px">Theme</div><div style="font-size:13px;color:#5B6475">System</div></div>
+</div>
+<div style="font-size:12px;color:#5B6475;padding:0 4px">Signed in as priya.tutor@gmail.com</div>
+</div>
+<div style="flex:none;height:72px;background:#FFFFFF;border-top:1px solid #E4DED2;display:flex">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#5B6475;font-size:12px"><span style="padding:4px 18px;display:flex"><span class="ms">today</span></span>Today</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#5B6475;font-size:12px"><span style="padding:4px 18px;display:flex"><span class="ms">group</span></span>Students</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#1E5F74;font-size:12px;font-weight:600"><span style="background:#DCEAEE;border-radius:16px;padding:4px 18px;display:flex"><span class="ms">settings</span></span>Settings</div>
+</div>
+</div></div>
+
+<!-- 2j Empty -->
+<div class="dv-opt" id="2j"><div class="dv-olabel"><a class="dv-oid" href="#2j">2j</a>Today · empty day</div>
+<div style="width:360px;height:760px;background:#FAF7F2;border-radius:28px;border:1px solid #E4DED2;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="padding:12px 20px"><div style="font-size:20px;font-weight:600">Sunday, 27 Sep</div><div style="font-size:13px;color:#5B6475;margin-top:2px">Today · 0 classes</div></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:0 32px;gap:14px">
+<div style="width:72px;height:72px;border-radius:36px;background:#F6EAD3;display:flex;align-items:center;justify-content:center;transform:rotate(-14deg)"><span class="ms" style="font-size:36px;color:#C4841F">notifications_paused</span></div>
+<div style="font-size:18px;font-weight:600">No classes today. The bell's taking a nap.</div>
+<div style="font-size:14px;color:#5B6475">Next up: Aarav, Mon 6:00 PM.</div>
+</div>
+<div style="flex:none;height:72px;background:#FFFFFF;border-top:1px solid #E4DED2;display:flex">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#1E5F74;font-size:12px;font-weight:600"><span style="background:#DCEAEE;border-radius:16px;padding:4px 18px;display:flex"><span class="ms">today</span></span>Today</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#5B6475;font-size:12px"><span style="padding:4px 18px;display:flex"><span class="ms">group</span></span>Students</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#5B6475;font-size:12px"><span style="padding:4px 18px;display:flex"><span class="ms">settings</span></span>Settings</div>
+</div>
+</div></div>
+
+</div>
+</section>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Dark mode</span></div>
+<div class="dv-opts">
+<div class="dv-opt" id="3a"><div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Today · dark</div>
+<div style="width:360px;height:760px;background:#151A22;border-radius:28px;overflow:hidden;display:flex;flex-direction:column;color:#E8ECF2">
+<div style="height:32px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><span class="ms" style="font-size:16px">battery_full</span></div>
+<div style="padding:12px 20px"><div style="font-size:20px;font-weight:600">Friday, 25 Sep</div><div style="font-size:13px;color:#A3ABBA;margin-top:2px">Today · 3 classes</div></div>
+<div style="flex:1;padding:0 16px;display:flex;flex-direction:column;gap:12px">
+<div style="background:#1E2430;border:1px solid #2C3444;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums">6:00 PM</div><div style="font-size:15px;font-weight:600;margin-top:4px">Aarav Mehta</div><div style="font-size:13px;color:#A3ABBA;margin-top:2px">1:30 PM Fri in London</div></div><span style="font-size:12px;font-weight:600;padding:4px 8px;border-radius:8px;background:#1D3A2B;color:#8FD4AC">Reminder sent</span></div>
+<div style="display:flex;gap:8px"><button style="flex:1;height:44px;border-radius:8px;border:0;background:#3A8FA8;color:#0E1A20;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px"><span class="ms" style="font-size:20px">notifications</span>Remind again</button><button style="flex:1;height:44px;border-radius:8px;border:1px solid #394254;background:transparent;color:#E8ECF2;font-weight:600;font-size:14px">Reschedule</button></div>
+</div>
+<div style="background:#1E2430;border:1px solid #2C3444;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums">8:30 PM</div><div style="font-size:15px;font-weight:600;margin-top:4px">Emma Clarke</div><div style="font-size:13px;color:#A3ABBA;margin-top:2px">11:00 AM Fri in New York</div></div><span style="font-size:12px;font-weight:600;padding:4px 8px;border-radius:8px;background:#2E2752;color:#C3B6F5">Moved from Thu</span></div>
+<div style="display:flex;gap:8px"><button style="flex:1;height:44px;border-radius:8px;border:0;background:#3A8FA8;color:#0E1A20;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px"><span class="ms" style="font-size:20px;color:#0E1A20">notifications</span>Remind</button><button style="flex:1;height:44px;border-radius:8px;border:1px solid #394254;background:transparent;color:#E8ECF2;font-weight:600;font-size:14px">Reschedule</button></div>
+</div>
+<div style="background:#1E2430;border:1px solid #2C3444;border-radius:14px;padding:16px;display:flex;justify-content:space-between"><div><div style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums">3:30 AM</div><div style="font-size:15px;font-weight:600;margin-top:4px">Lily Tan</div><div style="font-size:13px;color:#A3ABBA;margin-top:2px">8:00 AM Sat in Sydney</div></div><span class="ms" style="color:#F0B95E">notifications</span></div>
+</div>
+<div style="flex:none;height:72px;background:#1E2430;border-top:1px solid #2C3444;display:flex">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#7EC3D6;font-size:12px;font-weight:600"><span style="background:#23414C;border-radius:16px;padding:4px 18px;display:flex"><span class="ms">today</span></span>Today</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#A3ABBA;font-size:12px"><span style="padding:4px 18px;display:flex"><span class="ms">group</span></span>Students</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#A3ABBA;font-size:12px"><span style="padding:4px 18px;display:flex"><span class="ms">settings</span></span>Settings</div>
+</div>
+</div></div>
+</div>
+<p class="dv-next">Try next: "make the full flow clickable" · "tighten the Today cards"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: { a: true }, wig: null, sheet: null, toast: null };
+  base = [
+    { id: 'a', time: '6:00 PM', name: 'Aarav Mehta', local: '1:30 PM Fri in London' },
+    { id: 'e', time: '8:30 PM', name: 'Emma Clarke', local: '11:00 AM Fri in New York', moved: 'Moved from Thu' },
+    { id: 'l', time: '11:30 PM', name: 'Lily Tan', local: '4:00 AM Sat in Sydney' }
+  ];
+  remind(c) {
+    const sent = { ...this.state.sent, [c.id]: true };
+    const all = this.base.every(b => sent[b.id]);
+    this.setState({ sent, wig: c.id + Date.now(), sheet: null, toast: all ? "Everyone's been rung." : `Reminder sent to ${c.name.split(' ')[0]} on WhatsApp.` });
+    clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toast: null, wig: null }), 2200);
+  }
+  renderVals() {
+    const { sent, wig, sheet, toast } = this.state;
+    const classes = this.base.map(c => {
+      const s = sent[c.id];
+      const badge = s ? 'Reminder sent' : c.moved || '';
+      return { ...c, hasBadge: !!badge, badge,
+        badgeBg: s ? '#E3F1E9' : '#ECE8FA', badgeFg: s ? '#1F5E3B' : '#3F2F8F',
+        remindLabel: s ? 'Remind again' : 'Remind',
+        anim: wig && wig.startsWith(c.id) ? 'tbwiggle 0.6s ease' : 'none',
+        open: () => this.setState({ sheet: c.id }),
+        remind: e => { e.stopPropagation(); this.remind(c); },
+        resched: e => e.stopPropagation() };
+    });
+    const sc = this.base.find(b => b.id === sheet);
+    return {
+      classes, toast,
+      sheetOpen: !!sc,
+      sheet: sc ? { ...sc, remind: () => this.remind(sc) } : {},
+      closeSheet: () => this.setState({ sheet: null }),
+      stop: e => e.stopPropagation(),
+      students: [
+        { initial: 'A', name: 'Aarav Mehta', next: 'Today 6:00 PM', now: '2:12 PM', city: 'London' },
+        { initial: 'E', name: 'Emma Clarke', next: 'Today 8:30 PM', now: '9:42 AM', city: 'New York' },
+        { initial: 'L', name: 'Lily Tan', next: 'Today 11:30 PM', now: '11:42 PM', city: 'Sydney' },
+        { initial: 'N', name: 'Noah Singh', next: 'To reschedule', now: '6:42 AM', city: 'Vancouver' },
+        { initial: 'Z', name: 'Zara Ahmed', next: 'Mon 5:00 PM', now: '5:42 PM', city: 'Dubai' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

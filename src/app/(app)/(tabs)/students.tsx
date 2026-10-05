@@ -1,37 +1,66 @@
-import { Link } from 'expo-router';
-import { FlatList, Pressable, Text, View } from 'react-native';
+import { router } from 'expo-router';
+import { FlatList, View } from 'react-native';
 
 import { Button } from '@/components/ui/button';
-import { EmptyState } from '@/components/ui/empty-state';
-import { Screen } from '@/components/ui/screen';
+import { Card } from '@/components/ui/card';
+import { Screen, ScreenHeader } from '@/components/ui/screen';
+import { Text } from '@/components/ui/text';
 import { useStudents } from '@/features/students/queries';
-import { router } from 'expo-router';
+import { nowIn } from '@/lib/time';
+import { useNow } from '@/lib/use-now';
 
+/** Students (2f) — INTERIM: list rows. "Next · …" line comes with the Students rebuild. */
 export default function StudentsScreen() {
   const { data: students = [], isLoading } = useStudents();
+  useNow();
 
   return (
     <Screen>
-      <Text className="mb-4 text-2xl font-bold text-ink">Students</Text>
+      <ScreenHeader
+        title="Students"
+        trailing={
+          <Button size="sm" label="Add" icon="add" onPress={() => router.push('/students/new')} />
+        }
+      />
       <FlatList
         data={students}
         keyExtractor={(s) => s.id}
-        contentContainerClassName="gap-2 pb-6 grow"
+        contentContainerClassName="gap-2 px-4 pb-6"
         ListEmptyComponent={
-          isLoading ? null : <EmptyState title="No students yet" body="Add your first one below." />
+          isLoading ? null : (
+            <Text className="px-1 py-6 text-[14px] text-muted">No students yet.</Text>
+          )
         }
-        renderItem={({ item }) => (
-          <Link href={{ pathname: '/students/[id]', params: { id: item.id } }} asChild>
-            <Pressable className="rounded-2xl bg-surface p-4 active:opacity-80">
-              <Text className="font-semibold text-ink">{item.name}</Text>
-              <Text className="text-sm text-ink-muted">{item.timezone}</Text>
-            </Pressable>
-          </Link>
-        )}
+        renderItem={({ item }) => {
+          const local = nowIn(item.timezone);
+          return (
+            <Card
+              row
+              onPress={() => router.push({ pathname: '/students/[id]', params: { id: item.id } })}
+            >
+              <View className="flex-row items-center gap-3">
+                <View className="h-10 w-10 items-center justify-center rounded-full bg-primary-container">
+                  <Text weight="semibold" className="text-[15px] text-on-primary-container">
+                    {item.name.charAt(0).toUpperCase()}
+                  </Text>
+                </View>
+                <View className="flex-1">
+                  <Text weight="semibold" className="text-[15px]">
+                    {item.name}
+                  </Text>
+                  {item.paused ? <Text className="text-[13px] text-muted">Paused</Text> : null}
+                </View>
+                <View className="items-end">
+                  <Text weight="semibold" tabular className="text-[14px]">
+                    {local.time}
+                  </Text>
+                  <Text className="text-[12px] text-muted">{item.city}</Text>
+                </View>
+              </View>
+            </Card>
+          );
+        }}
       />
-      <View className="pb-4">
-        <Button label="Add student" onPress={() => router.push('/students/new')} />
-      </View>
     </Screen>
   );
 }
